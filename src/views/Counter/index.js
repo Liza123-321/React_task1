@@ -5,26 +5,23 @@ import {withStyles} from "@material-ui/core/styles/index";
 import styles from './style'
 
 
-class Counter extends React.Component{
-    render(){
-        const { classes } = this.props;
+let Counter =({incrementFunction,counterValue,resetFunction,decrementFunction,classes})=>{
         return(
             <div>
-                <TextField className={classes.textField} value={this.props.counterValue}/>
+                <TextField className={classes.textField} value={counterValue}/>
                 <br/><br/>
-                <Button variant="raised" color="default" className={classes.button} onClick={this.props.incrementFunction}>
+                <Button variant="raised" color="default" className={classes.button} onClick={incrementFunction}>
                     increment
                 </Button>
-                <Button  variant="raised" color="secondary" className={classes.button} onClick={this.props.resetFunction}>
+                <Button  variant="raised" color="secondary" className={classes.button} onClick={resetFunction}>
                     reset
                 </Button>
-                <Button  variant="raised" color="default" className={classes.button} onClick={this.props.decrementFunction}>
+                <Button  variant="raised" color="default" className={classes.button} onClick={decrementFunction}>
                     decrement
                 </Button>
 
             </div>
         );
-    }
 }
 
 export default withStyles(styles)(Counter);
