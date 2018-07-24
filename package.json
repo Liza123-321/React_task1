@@ -4,6 +4,7 @@
   "homepage": "http://Liza123-321.github.io/React_task1",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^1.4.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4"
@@ -15,5 +16,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "npx gh-pages -d build"
+  },
+  "devDependencies": {
+    "prop-types": "^15.6.2"
   }
 }
