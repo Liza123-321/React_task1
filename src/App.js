@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import CounterContainer from './containers/CounterContainer';
+import ParentCounterContainer from './containers/ParentCounterContainer'
 
 
 class App extends Component {
@@ -12,8 +12,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </header>
           <br/>
-          <CounterContainer/>
-
+          <ParentCounterContainer/>
       </div>
     );
   }
