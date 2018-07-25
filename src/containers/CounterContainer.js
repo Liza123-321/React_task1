@@ -40,7 +40,7 @@ class CounterContainer extends React.Component{
         if(nextProps.command==="add" && (this.state.counter%2===0)){
             this.setState({ counter: this.state.counter + 1 })
         }
-        else if(nextProps.command==="remove" && (this.state.counter%2===1)){
+        else if(nextProps.command==="remove" && (this.state.counter%2!==0)){
             this.setState({ counter: this.state.counter - 1 })
         }
         else if(nextProps.command==="reset"){

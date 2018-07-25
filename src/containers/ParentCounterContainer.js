@@ -27,9 +27,9 @@ class ParentCounterContainer extends React.Component{
         console.log(this.state.counterContainers);
     }
     resetCounterContainer() {
-        this.setState({ command: "reset" });
-        this.setState ({counterContainers: [0]});
-        this.setState({ countCounter: 1 });
+        this.setState({ command: "reset",
+            counterContainers: [0],
+            countCounter: 1 });
     }
     removeCounterContainer() {
         if(this.state.countCounter>1){
