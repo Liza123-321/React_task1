@@ -25,12 +25,51 @@ class CounterContainer extends React.Component{
         console.log('decrement Counter');
         this.setState({ counter: this.state.counter - 1 });
     }
+    //LifeCycle
+    componentDidMount() {
+        console.log("Lifecycle: Counter componentDidMount.");
+    }
+    componentWillUnmount() {
+        console.log("Lifecycle: Counter componentWillUnmount.");
+    }
+    componentDidUpdate() {
+        console.log("Lifecycle: Counter componentDidUpdate.");
+    }
+    componentWillReceiveProps(nextProps){
+        console.log("Lifecycle: Counter componentWillRecieveProps.");
+        if(nextProps.command==="add" && (this.state.counter%2===0)){
+            this.setState({ counter: this.state.counter + 1 })
+        }
+        else if(nextProps.command==="remove" && (this.state.counter%2===1)){
+            this.setState({ counter: this.state.counter - 1 })
+        }
+        else if(nextProps.command==="reset"){
+            this.setState({ counter: 0 })
+        }
+        return true;
+    }
+    // getDerivedStateFromProps() {
+    //     console.log("Lifecycle: Counter getDerivedStateFromProps.");
+    // }
+    // getSnapshotBeforeUpdate(prevProps, prevState) {
+    //     console.log("Lifecycle: Counter getSnapshotBeforeUpdate.");
+    //     return null;
+    // }
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log("Lifecycle: Counter shouldComponentUpdate.");
+        if(nextState===this.state){
+            return false;
+        }
+        else return true;
+    }
     render(){
+        console.log("Lifecycle: Counter render.");
         return(
     <Counter incrementFunction={this.incrementCounter}
              resetFunction={this.resetCounter}
              decrementFunction={this.decrementCounter}
-             counterValue={this.state.counter}/>
+             counterValue={this.state.counter}
+    />
         );
     }
 }
@@ -38,7 +77,8 @@ CounterContainer.propTypes={
     incrementFunction:PropTypes.func,
     resetFunction: PropTypes.func,
     decrementFunction: PropTypes.func,
-    counterValue: PropTypes.number
+    counterValue: PropTypes.number,
+    command : PropTypes.string,
 };
 
 export default CounterContainer;

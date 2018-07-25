@@ -15,22 +15,25 @@ class ParentCounterContainer extends React.Component{
             counterContainers:[
                 0,
             ],
+            command:"start",
         }
     };
     addCounterContainer() {
         var arr = this.state.counterContainers;
         this.setState({ countCounter: this.state.countCounter + 1 });
+        this.setState({ command: "add" });
         arr.push (this.state.countCounter);
         this.setState ({counterContainers: arr});
         console.log(this.state.counterContainers);
     }
     resetCounterContainer() {
-        var arr = [0];
-        this.setState ({counterContainers: arr});
+        this.setState({ command: "reset" });
+        this.setState ({counterContainers: [0]});
         this.setState({ countCounter: 1 });
     }
     removeCounterContainer() {
         if(this.state.countCounter>1){
+            this.setState({ command: "remove" });
             var arr = this.state.counterContainers;
             arr.splice (this.state.countCounter-1);
             this.setState({ countCounter: this.state.countCounter - 1  });
@@ -41,10 +44,34 @@ class ParentCounterContainer extends React.Component{
     }
     eachTask = (i) => {
         return (
-            <CounterContainer key={i}></CounterContainer>
+            <CounterContainer key={i} command={this.state.command}></CounterContainer>
         )
     }
+    //LifeCycle
+    componentDidMount() {
+        console.log("Lifecycle: Parent componentDidMount.");
+    }
+    componentWillUnmount() {
+        console.log("Lifecycle: Parent componentWillUnmount.");
+    }
+    componentDidUpdate() {
+        console.log("Lifecycle: Parent componentDidUpdate.");
+    }
+    // getDerivedStateFromProps(nextProps) {
+    //     console.log("Lifecycle: Parent getDerivedStateFromProps.");
+    // }
+    // getSnapshotBeforeUpdate() {
+    //     console.log("Lifecycle: Parent getSnapshotBeforeUpdate.");
+    // }
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log("Lifecycle: Parent shouldComponentUpdate.");
+        return true;
+    }
+    componentWillReceiveProps(nextProps){
+        console.log("Lifecycle: Parent componentWillRecieveProps.");
+    }
     render(){
+        console.log("Lifecycle: Parent render.");
         return(
             <div>
                 <ParentCounter
