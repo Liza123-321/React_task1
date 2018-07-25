@@ -11,6 +11,8 @@ import { BrowserRouter as Router, Route, Link,Switch } from 'react-router-dom';
 import AboutContainer from './AboutContainer';
 import ParentContainer from './ParentCounterContainer';
 import NotFound from '../views/NotFound/index';
+import styles from '../views/Router/style';
+import {withStyles} from "@material-ui/core/styles/index";
 
 
 class RouterContainer extends React.Component{
@@ -20,30 +22,49 @@ class RouterContainer extends React.Component{
             active: "home"
         }
     };
-
     render(){
-        return(
-            <Router>
-                <div>
-                    <AppBar position="static">
-                        <Toolbar>
-                            <Link to="/"><Button color="inherit">Home</Button></Link>
-                            <Link to="/about"><Button color="inherit">About</Button></Link>
-                            <Link to="/counters"> <Button color="inherit">Counters</Button></Link>
-                            <Link to="/test"> <Button color="inherit">404</Button></Link>
-                        </Toolbar>
-                    </AppBar>
-                    <Switch>
-                        <Route  path="/about" component={AboutContainer}/>
-                        <Route  path="/counters" component={ParentContainer}/>
-                        <Route exact path="*" component={NotFound} />
-                    </Switch>
+        const { classes } = this.props;
+        if(this.state.active!=="home"){
+            return(
+                <Router>
+                    <div>
+                        <Switch>
+                            <Route  exact path="/" component={null}/>
+                            <Route  path="/about" component={AboutContainer}/>
+                            <Route  path="/counters" component={ParentContainer}/>
+                            <Route  path="*" component={NotFound} />
+                        </Switch>
 
-                </div>
-            </Router>
-        );
+                    </div>
+                </Router>
+            );
+        }
+        else{
+            return(
+                <Router>
+                    <div>
+                        <AppBar position="static">
+                            <Toolbar className={classes.myNav}>
+                                <Link to="/"><Button  color="secondary" >Home</Button></Link>
+                                <Link to="/about"><Button color="secondary">About</Button></Link>
+                                <Link to="/counters"> <Button color="secondary">Counters</Button></Link>
+                                <Link to="/test"> <Button color="secondary">404</Button></Link>
+                            </Toolbar>
+                        </AppBar>
+                        <Switch>
+                            <Route  exact path="/" component={null}/>
+                            <Route  path="/about" component={AboutContainer}/>
+                            <Route  path="/counters" component={ParentContainer}/>
+                            <Route  path="/*" component={NotFound} />
+                        </Switch>
+
+                    </div>
+                </Router>
+            );
+        }
+
     }
 }
 
 
-export default RouterContainer;
+export default withStyles(styles)(RouterContainer);

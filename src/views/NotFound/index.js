@@ -1,14 +1,17 @@
 import React from 'react';
+import Card from '@material-ui/core/Card';
 import {withStyles} from "@material-ui/core/styles/index";
 import styles from './style'
 
 
-let NotFound =({})=>{
+let NotFound =({classes})=>{
         return(
             <div>
-<h1>404: NOT FOUND</h1>
+                <Card className={classes.card}>
+                    <h1>404: NOT FOUND</h1>
+                </Card>
             </div>
         );
 }
 
-export default NotFound;
+export default withStyles(styles)(NotFound);

@@ -5,6 +5,11 @@ const styles = theme => ({
     extendedIcon: {
         marginRight: theme.spacing.unit,
     },
+   myNav: {
+       backgroundColor:'white',
+       display:'flex',
+       justifyContent:'center',
+    },
 });
 
 export default styles;
