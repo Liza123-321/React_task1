@@ -2,7 +2,6 @@ import React from 'react';
 import ParentCounter from '../views/ParentCounter/index';
 import CounterContainer from './CounterContainer';
 import PropTypes from 'prop-types';
-import AboutContainer from './AboutContainer';
 
 class ParentCounterContainer extends React.Component{
     constructor(props){

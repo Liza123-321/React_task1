@@ -1,6 +1,5 @@
 import React from 'react';
 import About from '../views/About/index';
-import PropTypes from 'prop-types';
 
 class AboutContainer extends React.Component{
     constructor(props){
