@@ -7,6 +7,7 @@ const styles = theme => ({
     },
    myNav: {
        backgroundColor:'white',
+       color: 'black',
        display:'flex',
        justifyContent:'center',
     },
