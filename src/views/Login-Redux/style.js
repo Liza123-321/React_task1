@@ -35,7 +35,7 @@ const styles = theme => ({
         marginTop:30,
         marginBottom:30,
         paddingBottom:30,
-        backgroundColor:'#ebebeb',
+        backgroundColor:'LightSkyBlue',
         marginLeft: 'auto',
         marginRight: 'auto',
         paddingTop: 20,

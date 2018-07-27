@@ -8,7 +8,6 @@ const Errors = ({formErrors}) =>
                 return (<div key={i}>
                         <TextField
                             error
-                            label="Error"
                             value={formErrors[fieldName]}
                         />
                         <br/><br/>

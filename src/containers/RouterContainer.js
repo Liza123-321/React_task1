@@ -7,7 +7,9 @@ import AboutContainer from './AboutContainer';
 import ParentContainer from './ParentCounterContainer';
 import NotFound from '../views/NotFound/index';
 import Login from './LoginContainer';
+import LoginRedux from './LoginReduxContainer';
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 
 
 class RouterContainer extends React.Component {
@@ -49,7 +51,7 @@ class RouterContainer extends React.Component {
                             <Route path="/React_task1/about" component={AboutContainer}/>
                             <Route path="/React_task1/counters" component={ParentContainer}/>
                             <Route path="/React_task1/login" component={Login}/>
-                            <Route path="/React_task1/login-redux" component={null}/>
+                            <Route path="/React_task1/login-redux" component={LoginRedux}/>
                             <Route path="/React_task1/404" component={NotFound}/>
                             <Route path="/React_task1/*" render={() => (<Redirect to="/React_task1/404"/>)}/>
                         </Switch>
@@ -66,6 +68,5 @@ RouterContainer.propTypes={
     password: PropTypes.string,
 
 };
-
 
 export default withRouter(RouterContainer);

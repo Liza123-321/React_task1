@@ -3,19 +3,18 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import {withStyles} from "@material-ui/core/styles/index";
 import Card from '@material-ui/core/Card';
-import AuthIcon from '@material-ui/icons/Person';
-import Errors from '../Login/Errors';
+import Errors from './Errors';
 import styles from './style';
 
 
 
-let Login =({classes,email,password,handleUserInput,formErrors,formValid})=>{
+let Login =({classes,email,password,formErrors,formValid,changeEmail,changePassword})=>{
     return(
         <div>
             <form>
                 <Card className={classes.card}>
                     <h1>
-                        <AuthIcon color="primary" className={classes.authIcon}/>
+                       Login Redux
                     </h1>
                     {
                         formValid!==true && <Card className={classes.inputGroup}>
@@ -29,7 +28,7 @@ let Login =({classes,email,password,handleUserInput,formErrors,formValid})=>{
                         className={classes.textField}
                         margin="normal"
                         value={email}
-                        onChange={handleUserInput}
+                        onChange={changeEmail}
                     /><br/>
                     <TextField
                         id="password"
@@ -37,7 +36,7 @@ let Login =({classes,email,password,handleUserInput,formErrors,formValid})=>{
                         type="password"
                         className={classes.textField}
                         margin="normal"
-                        onChange={handleUserInput}
+                        onChange={changePassword}
                         value={password}
                     />
                     <br/><br/>
