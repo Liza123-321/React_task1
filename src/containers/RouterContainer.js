@@ -30,6 +30,7 @@ class RouterContainer extends React.Component {
         if (this.props.history.location.pathname === "/React_task1/about") this.setState({value: 0});
         else if (this.props.history.location.pathname === "/React_task1/counters") this.setState({value: 1});
         else if (this.props.history.location.pathname === "/React_task1/login") this.setState({value: 2});
+        else if (this.props.history.location.pathname === "/React_task1/login-redux") this.setState({value: 3});
         else if (this.props.history.location.pathname === "/React_task1/") this.setState({value: -1});
         else this.setState({value: -2});
     }
@@ -39,12 +40,16 @@ class RouterContainer extends React.Component {
                 <Router>
                     <div>
                         <MyRouter value={this.state.value}
-                                  handleChange={this.handleChange}/>
+                                  handleChange={this.handleChange}
+                                  login={this.state.login}
+                                  password={this.state.password}
+                        />
                         <Switch>
                             <Route exact path="/React_task1/" component={null}/>
                             <Route path="/React_task1/about" component={AboutContainer}/>
                             <Route path="/React_task1/counters" component={ParentContainer}/>
                             <Route path="/React_task1/login" component={Login}/>
+                            <Route path="/React_task1/login-redux" component={null}/>
                             <Route path="/React_task1/404" component={NotFound}/>
                             <Route path="/React_task1/*" render={() => (<Redirect to="/React_task1/404"/>)}/>
                         </Switch>
@@ -57,6 +62,8 @@ class RouterContainer extends React.Component {
 RouterContainer.propTypes={
     handleChange: PropTypes.func,
     value: PropTypes.number,
+    login: PropTypes.string,
+    password: PropTypes.string,
 
 };
 

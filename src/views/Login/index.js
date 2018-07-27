@@ -4,27 +4,10 @@ import TextField from '@material-ui/core/TextField';
 import {withStyles} from "@material-ui/core/styles/index";
 import Card from '@material-ui/core/Card';
 import AuthIcon from '@material-ui/icons/Person';
-import styles from './style'
+import Errors from './Errors';
+import styles from './style';
 
-export const FormErrors = ({formErrors}) =>
-    <div >
-        {Object.keys(formErrors).map((fieldName, i) => {
-            if(formErrors[fieldName].length > 0){
-                return (<div    key={i}>
-                        <TextField
-                            error
-                            label="Email Error"
-                            value={formErrors[fieldName]}
-                        />
-                        <br/><br/>
-                    </div>
 
-                )
-            } else {
-                return '';
-            }
-        })}
-    </div>
 
 let Login =({classes,email,password,handleUserInput,formErrors,formValid})=>{
     return(
@@ -34,12 +17,12 @@ let Login =({classes,email,password,handleUserInput,formErrors,formValid})=>{
                 <h1>
                     <AuthIcon color="primary" className={classes.authIcon}/>
                 </h1>
-                <Card className={classes.inputGroup}>
-                    Errors
-                    <FormErrors formErrors={formErrors}/>
-                </Card>
-
-
+                {
+                    formValid!==true && <Card className={classes.inputGroup}>
+                        Errors
+                        <Errors formErrors={formErrors}/>
+                    </Card>
+                }
                 <TextField
                     id="email"
                     label="Email"
@@ -59,7 +42,7 @@ let Login =({classes,email,password,handleUserInput,formErrors,formValid})=>{
                 />
                 <br/><br/>
                 <Button  variant="raised" color="secondary" type="submit" disabled={!formValid}
-                         onClick={()=>{console.log(email+ " : " + password)}} className={classes.button}>
+                         onClick={()=>{console.log(email+ " : " + password); alert(JSON.stringify( email+ " : " + password))}} className={classes.button}>
                     Login
                 </Button>
                 <Card className={classes.inputGroup}>

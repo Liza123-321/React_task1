@@ -57,7 +57,7 @@ class CounterContainer extends React.Component{
     // }
     shouldComponentUpdate(nextProps, nextState) {
         console.log("Lifecycle: Counter shouldComponentUpdate.");
-        if(nextState===this.state){
+        if(nextState.counter===this.state.counter){
             return false;
         }
         else return true;
