@@ -1,21 +1,22 @@
 
-export const validateFormSuccess =(formValid)=>{
+export const validateForm =(emailValid,passwordValid)=>{
     return{
-        type: 'VALIDATE_FORM_SUCCESS',
-        formValid
+        type: 'VALIDATE_FORM',
+        emailValid,
+        passwordValid
     }
 }
 
-export const validateEmailSuccess =(emailValid)=>{
+export const validateEmail =(emailValid)=>{
     return{
-        type: 'VALIDATE_EMAIL_SUCCESS',
+        type: 'VALIDATE_EMAIL',
         emailValid
     }
 }
 
-export const validatePasswordSuccess =(passwordValid)=>{
+export const validatePassword =(passwordValid)=>{
     return{
-        type: 'VALIDATE_PASSWORD_SUCCESS',
+        type: 'VALIDATE_PASSWORD',
         passwordValid
     }
 }

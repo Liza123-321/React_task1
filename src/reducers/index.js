@@ -9,20 +9,26 @@ const initialState = {
 };
  const loginForm=(state=initialState,action)=>{
     switch(action.type){
-        case 'VALIDATE_FORM_SUCCESS':
+        case 'VALIDATE_FORM':
+            let temp=false;
+            if(action.emailValid===true && action.passwordValid===true) temp=true;
             return {
                 ...state,
-                isAuth:true
+                isAuth:temp
             }
-        case 'VALIDATE_EMAIL_SUCCESS':
+        case 'VALIDATE_EMAIL':
+            let emailTemp=false;
+            if(action.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i))  emailTemp=true;
             return{
                 ...state,
-                emailValid:true
+                emailValid:emailTemp
             }
-        case 'VALIDATE_PASSWORD_SUCCESS':
+        case 'VALIDATE_PASSWORD':
+            let passwordTemp=false;
+            if(action.password.length >=6 )  passwordTemp=true;
             return{
                 ...state,
-                passwordValid:true
+                passwordValid:passwordTemp
             }
         case 'CHANGE_EMAIL':
             return{

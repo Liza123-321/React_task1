@@ -2,9 +2,10 @@ import React from 'react';
 import LoginRedux from '../views/Login-Redux/index';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {validateFormSuccess,changeEmail,changePassword} from '../actions/index';
+import {validateForm,changeEmail,changePassword,validateEmail,validatePassword} from '../actions/index';
 
 const mapStateToProps=(state)=>{
+    console.log(state);
     return{
         formValid: state.isAuth,
         email:state.email,
@@ -17,8 +18,8 @@ const mapStateToProps=(state)=>{
 
 const mapDispatchToProps=(dispatch,ownProps)=>{
     return{
-        // changeEmail: dispatch(changeEmail(ownProps.email)),
-        // changePassword: dispatch(changePassword(ownProps.password))
+        changeEmail:(email)=> dispatch(changeEmail(email.target.value)),
+        changePassword:(password)=> dispatch(changePassword(password.target.value)),
     }
 }
 
