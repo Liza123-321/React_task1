@@ -8,10 +8,10 @@ import styles from './style';
 
 
 
-let Login =({classes,email,password,formErrors,formValid,changeEmail,changePassword})=>{
+let Login =({classes,email,password,formErrors,formValid,changeEmail,changePassword,validateForm})=>{
     return(
         <div>
-            <form>
+            <form onChange={validateForm}>
                 <Card className={classes.card}>
                     <h1>
                        Login Redux

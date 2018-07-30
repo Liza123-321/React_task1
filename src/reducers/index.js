@@ -1,4 +1,3 @@
-
 const initialState = {
     email: '',
     password: '',
@@ -7,39 +6,41 @@ const initialState = {
     emailValid: false,
     passwordValid: false,
 };
- const loginForm=(state=initialState,action)=>{
-    switch(action.type){
+const loginForm = (state = initialState, action) => {
+    switch (action.type) {
         case 'VALIDATE_FORM':
-            let temp=false;
-            if(action.emailValid===true && action.passwordValid===true) temp=true;
+            let temp = false;
+            if (state.emailValid === true && state.passwordValid === true) temp = true;
             return {
                 ...state,
-                isAuth:temp
-            }
-        case 'VALIDATE_EMAIL':
-            let emailTemp=false;
-            if(action.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i))  emailTemp=true;
-            return{
-                ...state,
-                emailValid:emailTemp
-            }
-        case 'VALIDATE_PASSWORD':
-            let passwordTemp=false;
-            if(action.password.length >=6 )  passwordTemp=true;
-            return{
-                ...state,
-                passwordValid:passwordTemp
+                isAuth: temp
             }
         case 'CHANGE_EMAIL':
-            return{
+            let emailTemp = false;
+            let errorsEmail= state.formErrors;
+            if (action.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+                emailTemp = true;
+                errorsEmail.email='';
+            }
+            return {
                 ...state,
                 email: action.email,
+                emailValid: emailTemp,
+                formErrors: errorsEmail,
 
             }
         case 'CHANGE_PASSWORD':
-            return{
+            let passwordTemp = false;
+            let errorsPass= state.formErrors;
+            if (action.password.length >= 6){
+                passwordTemp = true;
+                errorsPass.password='';
+            }
+            return {
                 ...state,
                 password: action.password,
+                passwordValid: passwordTemp,
+                formErrors:errorsPass,
 
             }
         default:
@@ -48,4 +49,4 @@ const initialState = {
     }
 }
 
- export default loginForm;
+export default loginForm;

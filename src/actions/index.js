@@ -1,26 +1,9 @@
 
-export const validateForm =(emailValid,passwordValid)=>{
+export const validateForm =()=>{
     return{
-        type: 'VALIDATE_FORM',
-        emailValid,
-        passwordValid
+        type: 'VALIDATE_FORM'
     }
 }
-
-export const validateEmail =(emailValid)=>{
-    return{
-        type: 'VALIDATE_EMAIL',
-        emailValid
-    }
-}
-
-export const validatePassword =(passwordValid)=>{
-    return{
-        type: 'VALIDATE_PASSWORD',
-        passwordValid
-    }
-}
-
 export const changeEmail =(email)=>{
     return{
         type: 'CHANGE_EMAIL',
