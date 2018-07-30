@@ -31,6 +31,15 @@ const styles = theme => ({
         flexWrap: 'wrap',
         maxWidth: 1000,
     },
+    cardSuccess: {
+        marginTop:20,
+        backgroundColor: '#00FA9A',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        maxWidth: 1000,
+    },
     inputGroup: {
         marginTop:30,
         marginBottom:30,

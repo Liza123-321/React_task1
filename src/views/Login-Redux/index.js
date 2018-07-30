@@ -5,7 +5,7 @@ import {withStyles} from "@material-ui/core/styles/index";
 import Card from '@material-ui/core/Card';
 import Errors from './Errors';
 import styles from './style';
-
+import {Link} from 'react-router-dom';
 
 
 let Login =({classes,email,password,formErrors,formValid,changeEmail,changePassword,validateForm})=>{
@@ -40,9 +40,10 @@ let Login =({classes,email,password,formErrors,formValid,changeEmail,changePassw
                         value={password}
                     />
                     <br/><br/>
-                    <Button  variant="raised" color="secondary" type="submit" disabled={!formValid}
-                             onClick={()=>{console.log(email+ " : " + password); alert(JSON.stringify( email+ " : " + password))}} className={classes.button}>
-                        Login
+
+                        <Button  variant="raised" color="secondary"  disabled={!formValid}
+                                  className={classes.button}>
+                            <Link to="/React_task1/login-redux/success">  Login </Link>
                     </Button>
                     <Card className={classes.inputGroup}>
                         <TextField
