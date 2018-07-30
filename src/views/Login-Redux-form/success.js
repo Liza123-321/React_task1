@@ -30,8 +30,8 @@ let LoginSuccess = ({classes,password, email}) => {
 const mapStateToProps=(state)=>{
     console.log(state);
     return{
-        email:state.loginForm.email,
-        password : state.loginForm.password,
+        // email:state.form.login,
+        // password : state.loginForm,
     }
 
 }

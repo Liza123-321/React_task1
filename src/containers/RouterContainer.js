@@ -8,7 +8,9 @@ import ParentContainer from './ParentCounterContainer';
 import NotFound from '../views/NotFound/index';
 import Login from './LoginContainer';
 import LoginRedux from './LoginReduxContainer';
-import LoginSuccess from '../views/Login-Redux/success'
+import LoginReduxForm from './LoginReduxFormContainer';
+import LoginSuccess from '../views/Login-Redux/success';
+import LoginReduxFormSuccess from '../views/Login-Redux-form/success'
 import PropTypes from "prop-types";
 
 
@@ -32,6 +34,7 @@ class RouterContainer extends React.Component {
         else if (this.props.history.location.pathname === "/React_task1/counters") this.setState({value: 1});
         else if (this.props.history.location.pathname === "/React_task1/login") this.setState({value: 2});
         else if (this.props.history.location.pathname === "/React_task1/login-redux") this.setState({value: 3});
+        else if (this.props.history.location.pathname === "/React_task1/login-redux-form") this.setState({value: 4});
         else if (this.props.history.location.pathname === "/React_task1/") this.setState({value: -1});
         else this.setState({value: -2});
     }
@@ -52,6 +55,8 @@ class RouterContainer extends React.Component {
                             <Route path="/React_task1/login" component={Login}/>
                             <Route path="/React_task1/login-redux/success" component={LoginSuccess}/>
                             <Route path="/React_task1/login-redux" component={LoginRedux}/>
+                            <Route path="/React_task1/login-redux-form/success" component={LoginReduxFormSuccess}/>
+                            <Route path="/React_task1/login-redux-form" component={LoginReduxForm}/>
                             <Route path="/React_task1/404" component={NotFound}/>
                             <Route path="/React_task1/*" render={() => (<Redirect to="/React_task1/404"/>)}/>
                         </Switch>

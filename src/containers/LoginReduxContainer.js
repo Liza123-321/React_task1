@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import {validateForm,changeEmail,changePassword} from '../actions/index';
 
 const mapStateToProps=(state)=>{
-    console.log(state);
+    console.warn(state.loginForm);
     return{
-        formValid: state.isAuth,
-        email:state.email,
-        password : state.password,
-        formErrors: state.formErrors,
+        formValid: state.loginForm.isAuth,
+        email:state.loginForm.email,
+        password : state.loginForm.password,
+        formErrors: state.loginForm.formErrors,
 
     }
 

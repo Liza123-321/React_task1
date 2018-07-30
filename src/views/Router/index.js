@@ -17,6 +17,7 @@ let MyRouter =({handleChange,value,classes})=>{
                                 <Tab label="Counters" href="/React_task1/counters"/>
                                 <Tab label="Login" href="/React_task1/login"/>
                                 <Tab label="Login redux" href="/React_task1/login-redux"/>
+                                <Tab label="Login redux-form" href="/React_task1/login-redux-form"/>
                             </Tabs>
                         </Toolbar>
                     </AppBar>

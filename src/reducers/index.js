@@ -1,10 +1,10 @@
 const initialState = {
-    email: '',
-    password: '',
-    isAuth: false,
-    formErrors: {email: 'Invalid email', password: 'Password is to short'},
-    emailValid: false,
-    passwordValid: false,
+        email: '',
+        password: '',
+        isAuth: false,
+        formErrors: {email: 'Invalid email', password: 'Password is to short'},
+        emailValid: false,
+        passwordValid: false,
 };
 const loginForm = (state = initialState, action) => {
     switch (action.type) {
