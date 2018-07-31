@@ -1,4 +1,5 @@
 import green from '@material-ui/core/colors/green';
+
 const styles = theme => ({
     button: {
         margin: theme.spacing.unit,
@@ -15,7 +16,7 @@ const styles = theme => ({
         display: 'flex',
         flexWrap: 'wrap',
     },
-    authIcon:{
+    authIcon: {
         width: 70,
         height: 70,
     },
@@ -23,7 +24,7 @@ const styles = theme => ({
         width: 200,
     },
     card: {
-        marginTop:10,
+        marginTop: 10,
         marginLeft: 'auto',
         marginRight: 'auto',
         paddingTop: 20,
@@ -32,7 +33,7 @@ const styles = theme => ({
         maxWidth: 1000,
     },
     cardSuccess: {
-        marginTop:20,
+        marginTop: 20,
         backgroundColor: '#00FA9A',
         marginLeft: 'auto',
         marginRight: 'auto',
@@ -41,10 +42,10 @@ const styles = theme => ({
         maxWidth: 1000,
     },
     inputGroup: {
-        marginTop:30,
-        marginBottom:30,
-        paddingBottom:30,
-        backgroundColor:'LightSkyBlue',
+        marginTop: 30,
+        marginBottom: 30,
+        paddingBottom: 30,
+        backgroundColor: 'LightSkyBlue',
         marginLeft: 'auto',
         marginRight: 'auto',
         paddingTop: 20,

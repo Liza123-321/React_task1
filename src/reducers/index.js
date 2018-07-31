@@ -1,10 +1,10 @@
 const initialState = {
-        email: '',
-        password: '',
-        isAuth: false,
-        formErrors: {email: 'Invalid email', password: 'Password is to short'},
-        emailValid: false,
-        passwordValid: false,
+    email: '',
+    password: '',
+    isAuth: false,
+    formErrors: {email: 'Invalid email', password: 'Password is to short'},
+    emailValid: false,
+    passwordValid: false,
 };
 const loginForm = (state = initialState, action) => {
     switch (action.type) {
@@ -16,11 +16,15 @@ const loginForm = (state = initialState, action) => {
                 isAuth: temp
             }
         case 'CHANGE_EMAIL':
-            let emailTemp = false;
-            let errorsEmail= state.formErrors;
+            let emailTemp = state.emailValid;
+            let errorsEmail = state.formErrors;
             if (action.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
                 emailTemp = true;
-                errorsEmail.email='';
+                errorsEmail.email = '';
+            }
+            else {
+                emailTemp = false;
+                errorsEmail.email = 'Invalid email';
             }
             return {
                 ...state,
@@ -29,44 +33,22 @@ const loginForm = (state = initialState, action) => {
                 formErrors: errorsEmail,
 
             }
-        case 'VALIDATE_EMAIL':
-            let emailValid = false;
-            let errorsEmailValid= state.formErrors;
-            if (action.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
-                emailValid = true;
-                errorsEmailValid.email='';
-            }
-            return {
-                ...state,
-                emailValid:  emailValid,
-                formErrors: errorsEmailValid,
-
-            }
-        case 'VALIDATE_PASSWORD':
-            let passwordValid = false;
-            let passwordEmailValid= state.formErrors;
-            if (action.password.length >= 6){
-                passwordValid = true;
-                passwordEmailValid.password='';
-            }
-            return {
-                ...state,
-                passwordValid: passwordValid,
-                formErrors:passwordEmailValid,
-
-            }
         case 'CHANGE_PASSWORD':
-            let passwordTemp = false;
-            let errorsPass= state.formErrors;
-            if (action.password.length >= 6){
+            let passwordTemp = state.passwordValid;
+            let errorsPass = state.formErrors;
+            if (action.password.length >= 6) {
                 passwordTemp = true;
-                errorsPass.password='';
+                errorsPass.password = '';
+            }
+            else {
+                passwordTemp = false;
+                errorsPass.password = 'Password is to short';
             }
             return {
                 ...state,
                 password: action.password,
                 passwordValid: passwordTemp,
-                formErrors:errorsPass,
+                formErrors: errorsPass,
 
             }
         case 'ADD_TO_STORE':
@@ -74,6 +56,9 @@ const loginForm = (state = initialState, action) => {
                 ...state,
                 email: action.email,
                 password: action.password,
+                isAuth: action.isAuth,
+                emailValid: true,
+                passwordValid: true,
 
             }
         default:

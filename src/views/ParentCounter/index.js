@@ -7,20 +7,20 @@ import AddIcon from '@material-ui/icons/Add';
 import styles from './style'
 
 
-let ParentCounter =({addFunction,resetFunction,removeFunction,countCounter,classes})=>{
-    return(
+let ParentCounter = ({addFunction, resetFunction, removeFunction, countCounter, classes}) => {
+    return (
         <div>
-            <TextField className={classes.textField}  label="All Counters" value={countCounter}/><br/>
+            <TextField className={classes.textField} label="All Counters" value={countCounter}/><br/>
             <Button variant="outlined" color="default" className={classes.button} onClick={addFunction}>
                 add new counter
-                <AddIcon />
+                <AddIcon/>
             </Button>
-            <Button  variant="outlined" color="primary" className={classes.button} onClick={resetFunction}>
+            <Button variant="outlined" color="primary" className={classes.button} onClick={resetFunction}>
                 reset counters
             </Button>
             <Button variant="outlined" color="secondary" className={classes.button} onClick={removeFunction}>
                 remove counter
-                <DeleteIcon />
+                <DeleteIcon/>
             </Button>
 
         </div>

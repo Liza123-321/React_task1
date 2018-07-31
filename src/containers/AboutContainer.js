@@ -1,19 +1,19 @@
 import React from 'react';
 import About from '../views/About/index';
 
-class AboutContainer extends React.Component{
-    constructor(props){
+class AboutContainer extends React.Component {
+    constructor(props) {
         super(props);
-        this.state={
-        }
+        this.state = {}
     };
-    render(){
-        return(
+
+    render() {
+        return (
             <About/>
         );
     }
 }
-AboutContainer.propTypes={
-};
+
+AboutContainer.propTypes = {};
 
 export default AboutContainer;

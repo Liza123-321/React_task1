@@ -24,6 +24,7 @@ class RouterContainer extends React.Component {
             password: 'anon',
         }
     };
+
     handleChange = (event, value) => {
         this.setState({value: value});
     };
@@ -41,33 +42,34 @@ class RouterContainer extends React.Component {
 
     render() {
         return (
-                <Router>
-                    <div>
-                        <MyRouter value={this.state.value}
-                                  handleChange={this.handleChange}
-                                  login={this.state.login}
-                                  password={this.state.password}
-                        />
-                        <Switch>
-                            <Route exact path="/React_task1/" component={null}/>
-                            <Route path="/React_task1/about" component={AboutContainer}/>
-                            <Route path="/React_task1/counters" component={ParentContainer}/>
-                            <Route path="/React_task1/login" component={Login}/>
-                            <Route path="/React_task1/login-redux/success" component={LoginSuccess}/>
-                            <Route path="/React_task1/login-redux" component={LoginRedux}/>
-                            <Route path="/React_task1/login-redux-form/success" component={LoginReduxFormSuccess}/>
-                            <Route path="/React_task1/login-redux-form" component={LoginReduxForm}/>
-                            <Route path="/React_task1/404" component={NotFound}/>
-                            <Route path="/React_task1/*" render={() => (<Redirect to="/React_task1/404"/>)}/>
-                            <Route path="/*" render={() => (<Redirect to="/React_task1/"/>)}/>
-                        </Switch>
-                    </div>
-                </Router>
+            <Router>
+                <div>
+                    <MyRouter value={this.state.value}
+                              handleChange={this.handleChange}
+                              login={this.state.login}
+                              password={this.state.password}
+                    />
+                    <Switch>
+                        <Route exact path="/React_task1/" component={null}/>
+                        <Route path="/React_task1/about" component={AboutContainer}/>
+                        <Route path="/React_task1/counters" component={ParentContainer}/>
+                        <Route path="/React_task1/login" component={Login}/>
+                        <Route path="/React_task1/login-redux/success" component={LoginSuccess}/>
+                        <Route path="/React_task1/login-redux" component={LoginRedux}/>
+                        <Route path="/React_task1/login-redux-form/success" component={LoginReduxFormSuccess}/>
+                        <Route path="/React_task1/login-redux-form" component={LoginReduxForm}/>
+                        <Route path="/React_task1/404" component={NotFound}/>
+                        <Route path="/React_task1/*" render={() => (<Redirect to="/React_task1/404"/>)}/>
+                        <Route path="/*" render={() => (<Redirect to="/React_task1/"/>)}/>
+                    </Switch>
+                </div>
+            </Router>
         )
     }
 
 }
-RouterContainer.propTypes={
+
+RouterContainer.propTypes = {
     handleChange: PropTypes.func,
     value: PropTypes.number,
     login: PropTypes.string,
