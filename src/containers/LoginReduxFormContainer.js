@@ -1,17 +1,54 @@
 import React from 'react'
 import LoginReduxForm  from '../views/Login-Redux-form/index'
-import LoginRedux from "../views/Login-Redux";
 import {connect} from "react-redux";
-import {changeEmail, changePassword, validateForm,addToStore,validatePassword,validateEmail} from "../actions";
+import {addToStore} from "../actions";
 
 class LoginReduxFormContainer extends React.Component {
     constructor(props) {
         super(props);
+        this.state={
+            formErrors: {email: 'Invalid email', password: 'Password is to short'},
+            emailValid: false,
+            passwordValid: false,
+            formValid: false
+        }
     }
     submit = values => {
         console.log(values);
         this.props.addToStore(values.email,values.password);
         this.props.history.push(`${this.props.history.location.pathname}/success`);
+    }
+    validateField(fieldName, value) {
+        console.log(fieldName)
+        let fieldValidationErrors = this.state.formErrors;
+        let emailValid = this.state.emailValid;
+        let passwordValid = this.state.passwordValid;
+        switch(fieldName) {
+            case 'email':
+                emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+                fieldValidationErrors.email = emailValid ? '' : ' Invalid email';
+                break;
+            case 'password':
+                passwordValid = value.length >= 6;
+                fieldValidationErrors.password = passwordValid ? '': 'Password is to short';
+                break;
+            default:
+                break;
+        }
+        this.setState({formErrors: fieldValidationErrors,
+            emailValid: emailValid,
+            passwordValid: passwordValid
+        }, this.validateForm);
+    }
+    validateForm() {
+        this.setState({formValid: this.state.emailValid &&
+            this.state.passwordValid});
+    }
+    handleUserInput = (e) => {
+        const name = e.target.id;
+        const value = e.target.value;
+        this.setState({[name]: value},
+            () => { this.validateField(name, value) });
     }
     render() {
         let { email, password } = this.props.formState.values ? this.props.formState.values : "";
@@ -19,29 +56,22 @@ class LoginReduxFormContainer extends React.Component {
             onSubmit={this.submit}
             email={email}
             password={password}
-            validateForm={this.props.validateForm}
-            validateEmail={this.props.validateEmail}
-            validatePassword={this.props.validatePassword}
-            formValid={this.props.formValid}
-            formErrors={this.props.formErrors}
+            handleUserInput ={this.handleUserInput}
+            formErrors={this.state.formErrors}
+            formValid={this.state.formValid}
         />
     }
 }
 
 function mapDispatchToProps(dispatch){
     return {
-        validateEmail:(email)=> dispatch(validateEmail(email.target.value)),
-        validatePassword:(password)=> dispatch(validatePassword(password.target.value)),
-        addToStore:(email,password)=> dispatch(addToStore(email,password)),
-        validateForm:()=> dispatch(validateForm()),
+        addToStore:(email,password)=> dispatch(addToStore(email,password))
         }
     }
 // прокидываем в props объект для инициализаци формы
 function mapStateToProps(state){
     // console.warn(state)
     return {
-        formValid: state.loginForm.isAuth,
-        formErrors: state.loginForm.formErrors,
         formState: { ...state.form.login },
         state: state
     }

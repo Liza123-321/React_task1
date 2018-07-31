@@ -9,7 +9,7 @@ let LoginSuccess = ({classes,password, email}) => {
     return (
         <div>
             <Card className={classes.cardSuccess}>
-                <h1>SUCCESS</h1>
+                <h1>SUCCESS LOGIN_REDUX</h1>
             </Card>
                 <TextField
                     id="email"
