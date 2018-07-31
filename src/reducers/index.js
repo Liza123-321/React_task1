@@ -70,7 +70,6 @@ const loginForm = (state = initialState, action) => {
 
             }
         case 'ADD_TO_STORE':
-            console.warn(action.email)
             return {
                 ...state,
                 email: action.email,

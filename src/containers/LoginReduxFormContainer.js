@@ -10,22 +10,20 @@ class LoginReduxFormContainer extends React.Component {
     }
     submit = values => {
         console.log(values);
-        addToStore(values.email,values.password);
+        this.props.addToStore(values.email,values.password);
         this.props.history.push(`${this.props.history.location.pathname}/success`);
     }
     render() {
         let { email, password } = this.props.formState.values ? this.props.formState.values : "";
-        let errors={email: 'Invalid email', password: 'Password is to short'};
         return <LoginReduxForm
             onSubmit={this.submit}
             email={email}
             password={password}
-            // addToStore={this.props.addToStore}
             validateForm={this.props.validateForm}
             validateEmail={this.props.validateEmail}
             validatePassword={this.props.validatePassword}
             formValid={this.props.formValid}
-            formErrors={errors}
+            formErrors={this.props.formErrors}
         />
     }
 }
@@ -34,7 +32,7 @@ function mapDispatchToProps(dispatch){
     return {
         validateEmail:(email)=> dispatch(validateEmail(email.target.value)),
         validatePassword:(password)=> dispatch(validatePassword(password.target.value)),
-        // addToStore:(email,password)=> dispatch(addToStore(email,password)),
+        addToStore:(email,password)=> dispatch(addToStore(email,password)),
         validateForm:()=> dispatch(validateForm()),
         }
     }
