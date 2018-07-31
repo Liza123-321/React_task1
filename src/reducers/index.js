@@ -29,6 +29,32 @@ const loginForm = (state = initialState, action) => {
                 formErrors: errorsEmail,
 
             }
+        case 'VALIDATE_EMAIL':
+            let emailValid = false;
+            let errorsEmailValid= state.formErrors;
+            if (action.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+                emailValid = true;
+                errorsEmailValid.email='';
+            }
+            return {
+                ...state,
+                emailValid:  emailValid,
+                formErrors: errorsEmailValid,
+
+            }
+        case 'VALIDATE_PASSWORD':
+            let passwordValid = false;
+            let passwordEmailValid= state.formErrors;
+            if (action.password.length >= 6){
+                passwordValid = true;
+                passwordEmailValid.password='';
+            }
+            return {
+                ...state,
+                passwordValid: passwordValid,
+                formErrors:passwordEmailValid,
+
+            }
         case 'CHANGE_PASSWORD':
             let passwordTemp = false;
             let errorsPass= state.formErrors;
@@ -43,10 +69,19 @@ const loginForm = (state = initialState, action) => {
                 formErrors:errorsPass,
 
             }
+        case 'ADD_TO_STORE':
+            console.warn(action.email)
+            return {
+                ...state,
+                email: action.email,
+                password: action.password,
+
+            }
         default:
             return state
 
     }
 }
+
 
 export default loginForm;

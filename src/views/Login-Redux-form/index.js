@@ -4,49 +4,72 @@ import TextField from '@material-ui/core/TextField';
 import {Link} from 'react-router-dom';
 import {withStyles} from "@material-ui/core/styles/index";
 import Card from '@material-ui/core/Card';
+import Errors from './Errors';
 import { Field, reduxForm } from 'redux-form';
+import styles from "../Login-Redux/style";
+import {connect} from "react-redux";
+import {addToStore} from "../../actions/index";
 
-
-let LoginReduxForm = props => {
-    const { handleSubmit } = props;
-    this.renderField = ({ input, label, type,onChange}) => (
+this.renderField = ({ input, label, type,onChange,value}) => (
+    <div>
         <div>
-            <div>
-                <TextField
-                    id={label}
-                    label={label}
-                    margin="normal"
-                    type={type}
-                    onChange={onChange}
-                /><br/>
-            </div>
+            <TextField
+                {...input}
+                id={label}
+                label={label}
+                type={type}
+                value={value}
+                placeholder={label}
+            /><br/>
         </div>
-    );
-    return (
-        <form onSubmit={handleSubmit}>
-            <Card>
-                <h1>
-                    Login Redux-form
-                </h1>
-            </Card>
-            <div>
-                <Field name="email" component={this.renderField} onChange={props.changeEmail} label="Email" type="email"/>
-            </div>
-            <div>
-                <Field name="password" component={this.renderField} label="Password" onChange={props.changePassword}  type="password"/>
-            </div>
-            <Button  variant="raised" color="secondary"
-                    type="submit">Login
-                {/*<Link to="/React_task1/login-redux-form/success">  Login </Link>*/}
-            </Button>
-        </form>
-    )
-}
+    </div>
+);
 
+
+let LoginReduxForm =props=>{
+    const { handleSubmit} = props
+        return (
+            <form onSubmit={handleSubmit} onChange={props.validateForm}>
+                <Card className={props.classes.card}>
+                    <h1>
+                        Login Redux-form
+                    </h1>
+                    {
+                        props.formValid!==true && <Card className={props.classes.inputGroup}>
+                            Errors
+                            <Errors formErrors={props.formErrors}/>
+                        </Card>
+                    }
+                    <div>
+                        <Field name="email" component={this.renderField} label="Email" onChange={props.validateEmail} values={props.email} type="email" />
+                    </div>
+                    <div>
+                        <Field name="password" component={this.renderField} label="Password" onChange={props.validatePassword} values={props.password} type="password"/>
+                    </div>
+                    <Button  variant="raised" color="secondary" disabled={!props.formValid}
+                             type="submit" className={props.classes.button}>Login
+                        {/*<Link to="/React_task1/login-redux-form/success">  Login </Link>*/}
+                    </Button>
+                    <Card className={props.classes.inputGroup}>
+                        <TextField
+                            type="text"
+                            className={props.classes.textField}
+                            value={props.email}
+                        /><br/>
+                        <TextField
+                            type="text"
+                            className={props.classes.textField}
+                            value={props.password}
+                        />
+                    </Card>
+                </Card>
+            </form>
+        )
+    }
 
 LoginReduxForm  = reduxForm({
-    // a unique name for the form
     form: 'login'
 })(LoginReduxForm );
 
-export default LoginReduxForm;
+
+export default withStyles(styles)(LoginReduxForm);

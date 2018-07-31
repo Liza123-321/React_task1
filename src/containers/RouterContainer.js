@@ -59,6 +59,7 @@ class RouterContainer extends React.Component {
                             <Route path="/React_task1/login-redux-form" component={LoginReduxForm}/>
                             <Route path="/React_task1/404" component={NotFound}/>
                             <Route path="/React_task1/*" render={() => (<Redirect to="/React_task1/404"/>)}/>
+                            <Route path="/*" render={() => (<Redirect to="/React_task1/"/>)}/>
                         </Switch>
                     </div>
                 </Router>

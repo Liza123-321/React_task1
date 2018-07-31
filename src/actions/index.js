@@ -17,3 +17,23 @@ export const changePassword =(password)=>{
         password
     }
 }
+export const validatePassword =(password)=>{
+    return{
+        type: 'VALIDATE_PASSWORD',
+        password
+    }
+}
+export const validateEmail =(email)=>{
+    return{
+        type: 'VALIDATE_EMAIL',
+        email
+    }
+}
+export const addToStore =(email,password)=>{
+    return{
+        type: 'ADD_TO_STORE',
+        email,
+        password,
+
+    }
+}

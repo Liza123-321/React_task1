@@ -23,15 +23,13 @@ let LoginSuccess = ({classes,password, email}) => {
                 margin="normal"
                 value={password}
             /><br/>
-
         </div>
     );
 }
 const mapStateToProps=(state)=>{
-    console.log(state);
     return{
-        // email:state.form.login,
-        // password : state.loginForm,
+        email:state.loginForm.email,
+        password : state.loginForm.password,
     }
 
 }
