@@ -1,13 +1,15 @@
 import React from 'react';
 import Login from '../views/Login/index';
 import PropTypes from 'prop-types';
+import {validateForm,validateField} from "../validation";
+
 
 class LoginContainer extends React.Component {
     constructor(props) {
         super(props);
         this.handleUserInput = this.handleUserInput.bind(this);
-        this.validateField = this.validateField.bind(this);
-        this.validateForm = this.validateForm.bind(this);
+        this.validateField = validateField.bind(this);
+        this.validateForm =validateForm.bind(this);
         this.state = {
             email: '',
             password: '',
@@ -17,36 +19,6 @@ class LoginContainer extends React.Component {
             formValid: false
         }
     };
-
-    validateField(fieldName, value) {
-        let fieldValidationErrors = this.state.formErrors;
-        let emailValid = this.state.emailValid;
-        let passwordValid = this.state.passwordValid;
-        switch (fieldName) {
-            case 'email':
-                emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-                fieldValidationErrors.email = emailValid ? '' : ' Invalid email';
-                break;
-            case 'password':
-                passwordValid = value.length >= 6;
-                fieldValidationErrors.password = passwordValid ? '' : 'Password is to short';
-                break;
-            default:
-                break;
-        }
-        this.setState({
-            formErrors: fieldValidationErrors,
-            emailValid: emailValid,
-            passwordValid: passwordValid
-        }, this.validateForm);
-    }
-
-    validateForm() {
-        this.setState({
-            formValid: this.state.emailValid &&
-            this.state.passwordValid
-        });
-    }
 
     handleUserInput = (e) => {
         const name = e.target.id;

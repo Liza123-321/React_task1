@@ -2,10 +2,13 @@ import React from 'react'
 import LoginReduxForm from '../views/Login-Redux-form/index'
 import {connect} from "react-redux";
 import {addToStore} from "../actions";
+import {validateForm,validateField} from "../validation";
 
 class LoginReduxFormContainer extends React.Component {
     constructor(props) {
         super(props);
+        this.validateField = validateField.bind(this);
+        this.validateForm =validateForm.bind(this);
         this.state = {
             formErrors: {email: 'Invalid email', password: 'Password is to short'},
             emailValid: false,
@@ -18,36 +21,6 @@ class LoginReduxFormContainer extends React.Component {
         console.log(values);
         this.props.addToStore(values.email, values.password, this.state.formValid);
         this.props.history.push(`${this.props.history.location.pathname}/success`);
-    }
-
-    validateField(fieldName, value) {
-        let fieldValidationErrors = this.state.formErrors;
-        let emailValid = this.state.emailValid;
-        let passwordValid = this.state.passwordValid;
-        switch (fieldName) {
-            case 'email':
-                emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-                fieldValidationErrors.email = emailValid ? '' : ' Invalid email';
-                break;
-            case 'password':
-                passwordValid = value.length >= 6;
-                fieldValidationErrors.password = passwordValid ? '' : 'Password is to short';
-                break;
-            default:
-                break;
-        }
-        this.setState({
-            formErrors: fieldValidationErrors,
-            emailValid: emailValid,
-            passwordValid: passwordValid
-        }, this.validateForm);
-    }
-
-    validateForm() {
-        this.setState({
-            formValid: this.state.emailValid &&
-            this.state.passwordValid
-        });
     }
 
     handleUserInput = (e) => {
@@ -77,7 +50,6 @@ function mapDispatchToProps(dispatch) {
         addToStore: (email, password, isAuth) => dispatch(addToStore(email, password, isAuth))
     }
 }
-
 // прокидываем в props объект для инициализаци формы
 function mapStateToProps(state) {
     return {
