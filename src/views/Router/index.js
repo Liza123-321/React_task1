@@ -3,30 +3,41 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './style';
-import {withStyles} from "@material-ui/core/styles/index";
+import { withStyles } from '@material-ui/core/styles/index';
 
-let MyRouter =({handleChange,value,classes})=>{
-    return(
-                <div>
-                    {value!==-2 && <AppBar position="static">
-                        <Toolbar className={classes.myNav}>
-                            <Tabs value={value} onChange={handleChange}>
-                                {/*<Tab label="Home" href="/React_task1/"/>*/}
-                                <Tab label="About" component={Link} to={'/React_task1/about'}/>
-                                <Tab label="Counters"  component={Link} to={'/React_task1/counters'}/>
-                                <Tab label="Login" component={Link} to={'/React_task1/login'}/>
-                                <Tab label="Login redux"  component={Link} to={'/React_task1/login-redux'}/>
-                                <Tab label="Login redux-form"  component={Link} to={'/React_task1/login-redux-form'}/>
-                            </Tabs>
-                        </Toolbar>
-                    </AppBar>
-                    }
-                </div>
-        );
-
-}
-
+let MyRouter = ({ handleChange, value, classes }) => {
+	return (
+		<div>
+			{value !== -2 && (
+				<AppBar position="static">
+					<Toolbar className={classes.myNav}>
+						<Tabs value={value} onChange={handleChange}>
+							{/*<Tab label="Home" href="/React_task1/"/>*/}
+							<Tab label="About" component={Link} to={'/React_task1/about'} />
+							<Tab
+								label="Counters"
+								component={Link}
+								to={'/React_task1/counters'}
+							/>
+							<Tab label="Login" component={Link} to={'/React_task1/login'} />
+							<Tab
+								label="Login redux"
+								component={Link}
+								to={'/React_task1/login-redux'}
+							/>
+							<Tab
+								label="Login redux-form"
+								component={Link}
+								to={'/React_task1/login-redux-form'}
+							/>
+						</Tabs>
+					</Toolbar>
+				</AppBar>
+			)}
+		</div>
+	);
+};
 
 export default withStyles(styles)(MyRouter);
