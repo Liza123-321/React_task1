@@ -42,7 +42,7 @@ const styles = theme => ({
 		maxWidth: 1000,
 	},
 	errors: {
-		color: 'Tomato',
+		color: '#ff1a75',
 	},
 	inputGroup: {
 		marginTop: 30,

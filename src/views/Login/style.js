@@ -23,7 +23,7 @@ const styles = theme => ({
 		width: 200,
 	},
 	errors: {
-		color: 'Tomato',
+		color: '#ff1a75',
 	},
 	card: {
 		marginTop: 10,

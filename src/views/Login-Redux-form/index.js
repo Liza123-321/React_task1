@@ -4,7 +4,8 @@ import TextField from '@material-ui/core/TextField';
 import Input from '@material-ui/core/Input';
 import { withStyles } from '@material-ui/core/styles/index';
 import Card from '@material-ui/core/Card';
-import { ErrorsEmail, Errors, ErrorsPassword } from './Errors';
+import ErrorsEmail from './Errors';
+import ErrorsPassword from './Errors';
 import { Field, reduxForm } from 'redux-form';
 import styles from '../Login-Redux/style';
 

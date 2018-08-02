@@ -4,7 +4,8 @@ import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles/index';
 import Card from '@material-ui/core/Card';
 import AuthIcon from '@material-ui/icons/Person';
-import { Errors, ErrorsEmail, ErrorsPassword } from './Errors';
+import ErrorsEmail from './Errors';
+import ErrorsPassword from './Errors';
 import styles from './style';
 
 let Login = ({

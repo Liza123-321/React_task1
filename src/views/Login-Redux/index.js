@@ -3,7 +3,8 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles/index';
 import Card from '@material-ui/core/Card';
-import { ErrorsEmail, Errors, ErrorsPassword } from './Errors';
+import ErrorsEmail from './Errors';
+import ErrorsPassword from './Errors';
 import styles from './style';
 import { Link } from 'react-router-dom';
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles/index';
+import styles from './style';
 
 export const Errors = ({ formErrors }) => (
 	<div>
@@ -7,7 +9,7 @@ export const Errors = ({ formErrors }) => (
 			if (formErrors[fieldName].length > 0) {
 				return (
 					<div key={i}>
-						<TextField error value={formErrors[fieldName]} />
+						<TextField error label="Error" value={formErrors[fieldName]} />
 						<br />
 						<br />
 					</div>
@@ -18,9 +20,10 @@ export const Errors = ({ formErrors }) => (
 		})}
 	</div>
 );
-export let ErrorsEmail = () => {
-	return <div>Invalid email</div>;
+let ErrorsEmail = ({ classes }) => {
+	return <div className={classes.errors}>Invalid email</div>;
 };
-export let ErrorsPassword = () => {
-	return <div>Password is to short</div>;
+let ErrorsPassword = ({ classes }) => {
+	return <div className={classes.errors}>Password is to short</div>;
 };
+export default withStyles(styles)(ErrorsEmail, ErrorsPassword);
