@@ -41,6 +41,9 @@ const styles = theme => ({
 		flexWrap: 'wrap',
 		maxWidth: 1000,
 	},
+	errors: {
+		color: 'Tomato',
+	},
 	inputGroup: {
 		marginTop: 30,
 		marginBottom: 30,

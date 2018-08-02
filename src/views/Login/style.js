@@ -22,6 +22,9 @@ const styles = theme => ({
 	menu: {
 		width: 200,
 	},
+	errors: {
+		color: 'Tomato',
+	},
 	card: {
 		marginTop: 10,
 		marginLeft: 'auto',

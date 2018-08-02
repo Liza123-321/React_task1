@@ -56,6 +56,7 @@ const loginForm = (state = initialState, action) => {
 				isAuth: action.isAuth,
 				emailValid: true,
 				passwordValid: true,
+				formErrors: { email: '', password: '' },
 			};
 		default:
 			return state;

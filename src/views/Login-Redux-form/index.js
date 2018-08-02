@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Input from '@material-ui/core/Input';
 import { withStyles } from '@material-ui/core/styles/index';
 import Card from '@material-ui/core/Card';
-import Errors from './Errors';
+import { ErrorsEmail, Errors, ErrorsPassword } from './Errors';
 import { Field, reduxForm } from 'redux-form';
 import styles from '../Login-Redux/style';
 
@@ -29,12 +29,12 @@ let LoginReduxForm = props => {
 		<form onSubmit={handleSubmit}>
 			<Card className={props.classes.card}>
 				<h1>Login Redux-form</h1>
-				{props.formValid !== true && (
-					<Card className={props.classes.inputGroup}>
-						Errors
-						<Errors formErrors={props.formErrors} />
-					</Card>
-				)}
+				{/*{props.formValid !== true && (*/}
+				{/*<Card className={props.classes.inputGroup}>*/}
+				{/*Errors*/}
+				{/*<Errors formErrors={props.formErrors} />*/}
+				{/*</Card>*/}
+				{/*)}*/}
 				<div>
 					<Field
 						name="email"
@@ -45,6 +45,9 @@ let LoginReduxForm = props => {
 						type="email"
 					/>
 				</div>
+				<br />
+				{props.formErrors.email.length > 0 && <ErrorsEmail />}
+				<br />
 				<div>
 					<Field
 						name="password"
@@ -55,6 +58,9 @@ let LoginReduxForm = props => {
 						type="password"
 					/>
 				</div>
+				<br />
+				{props.formErrors.password.length > 0 && <ErrorsPassword />}
+				<br /> <br />
 				<Button
 					variant="raised"
 					color="secondary"

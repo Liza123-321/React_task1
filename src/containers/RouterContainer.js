@@ -61,31 +61,12 @@ class RouterContainer extends React.Component {
 		this.setState({ activeTabValue: value });
 	};
 
-	//пофиксить этот ужас
 	componentWillMount() {
 		pathNameTab.map(x => {
 			if (this.props.history.location.pathname === x.pathName) {
 				this.setState({ activeTabValue: x.activeTabValue });
 			}
 		});
-		// if (this.props.history.location.pathname === VIRTUAL_PATH + '/about')
-		// this.setState({ activeTabValue: 0 });
-		// else if (this.props.history.location.pathname === VIRTUAL_PATH + '/counters')
-		// this.setState({ activeTabValue: 1 });
-		// else if (this.props.history.location.pathname === VIRTUAL_PATH + '/login')
-		// this.setState({ activeTabValue: 2 });
-		// else if (
-		// this.props.history.location.pathname === VIRTUAL_PATH + '/login-redux'
-		// )
-		// this.setState({ activeTabValue: 3 });
-		// else if (
-		// this.props.history.location.pathname === VIRTUAL_PATH + '/login-redux-form'
-		// )
-		// this.setState({ activeTabValue: 4 });
-		// else if (this.props.history.location.pathname === VIRTUAL_PATH + '/')
-		// this.setState({ activeTabValue: false });
-		// else this.setState({ activeTabValue: false,
-		//         viewToolbar: false});
 	}
 
 	render() {

@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles/index';
 import Card from '@material-ui/core/Card';
-import Errors from './Errors';
+import { ErrorsEmail, Errors, ErrorsPassword } from './Errors';
 import styles from './style';
 import { Link } from 'react-router-dom';
 
@@ -22,12 +22,12 @@ let Login = ({
 			<form onChange={validateForm}>
 				<Card className={classes.card}>
 					<h1>Login Redux</h1>
-					{formValid !== true && (
-						<Card className={classes.inputGroup}>
-							Errors
-							<Errors formErrors={formErrors} />
-						</Card>
-					)}
+					{/*{formValid !== true && (*/}
+					{/*<Card className={classes.inputGroup}>*/}
+					{/*Errors*/}
+					{/*<Errors formErrors={formErrors} />*/}
+					{/*</Card>*/}
+					{/*)}*/}
 					<TextField
 						id="email"
 						label="Email"
@@ -36,6 +36,7 @@ let Login = ({
 						value={email}
 						onChange={changeEmail}
 					/>
+					{formErrors.email.length > 0 && <ErrorsEmail />}
 					<br />
 					<TextField
 						id="password"
@@ -46,6 +47,7 @@ let Login = ({
 						onChange={changePassword}
 						value={password}
 					/>
+					{formErrors.password.length > 0 && <ErrorsPassword />}
 					<br />
 					<br />
 
