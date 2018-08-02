@@ -18,40 +18,74 @@ import LoginSuccess from '../views/Login-Redux/success';
 import LoginReduxFormSuccess from '../views/Login-Redux-form/success';
 import PropTypes from 'prop-types';
 
+const VIRTUAL_PATH = '/React_task1';
+const pathNameTab = [
+	{
+		pathName: '/React_task1/about',
+		activeTabValue: 0,
+	},
+	{
+		pathName: '/React_task1/counters',
+		activeTabValue: 1,
+	},
+	{
+		pathName: '/React_task1/login',
+		activeTabValue: 2,
+	},
+	{
+		pathName: '/React_task1/login-redux',
+		activeTabValue: 3,
+	},
+	{
+		pathName: '/React_task1/login-redux-form',
+		activeTabValue: 4,
+	},
+	{
+		pathName: '/React_task1/',
+		activeTabValue: false,
+	},
+];
 class RouterContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleChange = this.handleChange.bind(this);
 		this.state = {
-			value: -1,
+			activeTabValue: false,
 			login: 'anon',
 			password: 'anon',
+			viewToolbar: true,
 		};
 	}
 
 	handleChange = (event, value) => {
-		this.setState({ value: value });
+		this.setState({ activeTabValue: value });
 	};
 
 	//пофиксить этот ужас
 	componentWillMount() {
-		if (this.props.history.location.pathname === '/React_task1/about')
-			this.setState({ value: 0 });
-		else if (this.props.history.location.pathname === '/React_task1/counters')
-			this.setState({ value: 1 });
-		else if (this.props.history.location.pathname === '/React_task1/login')
-			this.setState({ value: 2 });
-		else if (
-			this.props.history.location.pathname === '/React_task1/login-redux'
-		)
-			this.setState({ value: 3 });
-		else if (
-			this.props.history.location.pathname === '/React_task1/login-redux-form'
-		)
-			this.setState({ value: 4 });
-		else if (this.props.history.location.pathname === '/React_task1/')
-			this.setState({ value: -1 });
-		else this.setState({ value: -2 });
+		pathNameTab.map(x => {
+			if (this.props.history.location.pathname === x.pathName) {
+				this.setState({ activeTabValue: x.activeTabValue });
+			}
+		});
+		// if (this.props.history.location.pathname === VIRTUAL_PATH + '/about')
+		// this.setState({ activeTabValue: 0 });
+		// else if (this.props.history.location.pathname === VIRTUAL_PATH + '/counters')
+		// this.setState({ activeTabValue: 1 });
+		// else if (this.props.history.location.pathname === VIRTUAL_PATH + '/login')
+		// this.setState({ activeTabValue: 2 });
+		// else if (
+		// this.props.history.location.pathname === VIRTUAL_PATH + '/login-redux'
+		// )
+		// this.setState({ activeTabValue: 3 });
+		// else if (
+		// this.props.history.location.pathname === VIRTUAL_PATH + '/login-redux-form'
+		// )
+		// this.setState({ activeTabValue: 4 });
+		// else if (this.props.history.location.pathname === VIRTUAL_PATH + '/')
+		// this.setState({ activeTabValue: false });
+		// else this.setState({ activeTabValue: false,
+		//         viewToolbar: false});
 	}
 
 	render() {
@@ -59,35 +93,45 @@ class RouterContainer extends React.Component {
 			<Router>
 				<div>
 					<MyRouter
-						value={this.state.value}
+						activeTabValue={this.state.activeTabValue}
 						handleChange={this.handleChange}
 						login={this.state.login}
 						password={this.state.password}
+						viewToolbar={this.state.viewToolbar}
 					/>
 					<Switch>
-						<Route exact path="/React_task1/" component={null} />
-						<Route path="/React_task1/about" component={AboutContainer} />
-						<Route path="/React_task1/counters" component={ParentContainer} />
-						<Route path="/React_task1/login" component={Login} />
+						<Route exact path={VIRTUAL_PATH + '/'} component={null} />
+						<Route path={VIRTUAL_PATH + '/about'} component={AboutContainer} />
 						<Route
-							path="/React_task1/login-redux/success"
+							path={VIRTUAL_PATH + '/counters'}
+							component={ParentContainer}
+						/>
+						<Route path={VIRTUAL_PATH + '/login'} component={Login} />
+						<Route
+							path={VIRTUAL_PATH + '/login-redux/success'}
 							component={LoginSuccess}
 						/>
-						<Route path="/React_task1/login-redux" component={LoginRedux} />
 						<Route
-							path="/React_task1/login-redux-form/success"
+							path={VIRTUAL_PATH + '/login-redux'}
+							component={LoginRedux}
+						/>
+						<Route
+							path={VIRTUAL_PATH + '/login-redux-form/success'}
 							component={LoginReduxFormSuccess}
 						/>
 						<Route
-							path="/React_task1/login-redux-form"
+							path={VIRTUAL_PATH + '/login-redux-form'}
 							component={LoginReduxForm}
 						/>
-						<Route path="/React_task1/404" component={NotFound} />
+						<Route path={VIRTUAL_PATH + '/404'} component={NotFound} />
 						<Route
-							path="/React_task1/*"
-							render={() => <Redirect to="/React_task1/404" />}
+							path={VIRTUAL_PATH + '/*'}
+							render={() => <Redirect to={VIRTUAL_PATH + '/404'} />}
 						/>
-						<Route path="/*" render={() => <Redirect to="/React_task1/" />} />
+						<Route
+							path="/*"
+							render={() => <Redirect to={VIRTUAL_PATH + '/'} />}
+						/>
 					</Switch>
 				</div>
 			</Router>

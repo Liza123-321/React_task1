@@ -1,13 +1,14 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Input from '@material-ui/core/Input';
 import { withStyles } from '@material-ui/core/styles/index';
 import Card from '@material-ui/core/Card';
 import Errors from './Errors';
 import { Field, reduxForm } from 'redux-form';
 import styles from '../Login-Redux/style';
 
-this.renderField = ({ input, label, type, value }) => (
+this.renderField = ({ input, label, type }) => (
 	<div>
 		<div>
 			<TextField
@@ -15,7 +16,6 @@ this.renderField = ({ input, label, type, value }) => (
 				id={label}
 				label={label}
 				type={type}
-				value={value}
 				placeholder={label}
 			/>
 			<br />
@@ -65,13 +65,13 @@ let LoginReduxForm = props => {
 					Login
 				</Button>
 				<Card className={props.classes.inputGroup}>
-					<TextField
+					<Input
 						type="text"
 						className={props.classes.textField}
 						value={props.email}
 					/>
 					<br />
-					<TextField
+					<Input
 						type="text"
 						className={props.classes.textField}
 						value={props.password}

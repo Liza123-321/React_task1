@@ -7,30 +7,39 @@ import { Link } from 'react-router-dom';
 import styles from './style';
 import { withStyles } from '@material-ui/core/styles/index';
 
-let MyRouter = ({ handleChange, value, classes }) => {
+let MyRouter = ({ handleChange, activeTabValue, classes, viewToolbar }) => {
+	const VIRTUAL_PATH = '/React_task1';
 	return (
 		<div>
-			{value !== -2 && (
+			{viewToolbar !== false && (
 				<AppBar position="static">
 					<Toolbar className={classes.myNav}>
-						<Tabs value={value} onChange={handleChange}>
+						<Tabs value={activeTabValue} onChange={handleChange}>
 							{/*<Tab label="Home" href="/React_task1/"/>*/}
-							<Tab label="About" component={Link} to={'/React_task1/about'} />
+							<Tab
+								label="About"
+								component={Link}
+								to={VIRTUAL_PATH + '/about'}
+							/>
 							<Tab
 								label="Counters"
 								component={Link}
-								to={'/React_task1/counters'}
+								to={VIRTUAL_PATH + '/counters'}
 							/>
-							<Tab label="Login" component={Link} to={'/React_task1/login'} />
+							<Tab
+								label="Login"
+								component={Link}
+								to={VIRTUAL_PATH + '/login'}
+							/>
 							<Tab
 								label="Login redux"
 								component={Link}
-								to={'/React_task1/login-redux'}
+								to={VIRTUAL_PATH + '/login-redux'}
 							/>
 							<Tab
 								label="Login redux-form"
 								component={Link}
-								to={'/React_task1/login-redux-form'}
+								to={VIRTUAL_PATH + '/login-redux-form'}
 							/>
 						</Tabs>
 					</Toolbar>
