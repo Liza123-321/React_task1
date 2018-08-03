@@ -3,8 +3,8 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles/index';
 import Card from '@material-ui/core/Card';
-import ErrorsEmail from './Errors';
-import ErrorsPassword from './Errors';
+import EmailError from '../Errors/EmailError';
+import PasswordError from '../Errors/PasswordError';
 import styles from './style';
 import { Link } from 'react-router-dom';
 
@@ -37,7 +37,7 @@ let Login = ({
 						value={email}
 						onChange={changeEmail}
 					/>
-					{formErrors.email.length > 0 && <ErrorsEmail />}
+					{formErrors.email.length > 0 && <EmailError />}
 					<br />
 					<TextField
 						id="password"
@@ -48,7 +48,7 @@ let Login = ({
 						onChange={changePassword}
 						value={password}
 					/>
-					{formErrors.password.length > 0 && <ErrorsPassword />}
+					{formErrors.password.length > 0 && <PasswordError />}
 					<br />
 					<br />
 

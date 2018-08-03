@@ -4,8 +4,8 @@ import TextField from '@material-ui/core/TextField';
 import Input from '@material-ui/core/Input';
 import { withStyles } from '@material-ui/core/styles/index';
 import Card from '@material-ui/core/Card';
-import ErrorsEmail from './Errors';
-import ErrorsPassword from './Errors';
+import EmailError from '../Errors/EmailError';
+import PasswordError from '../Errors/PasswordError';
 import { Field, reduxForm } from 'redux-form';
 import styles from '../Login-Redux/style';
 
@@ -47,7 +47,7 @@ let LoginReduxForm = props => {
 					/>
 				</div>
 				<br />
-				{props.formErrors.email.length > 0 && <ErrorsEmail />}
+				{props.formErrors.email.length > 0 && <EmailError />}
 				<br />
 				<div>
 					<Field
@@ -60,7 +60,7 @@ let LoginReduxForm = props => {
 					/>
 				</div>
 				<br />
-				{props.formErrors.password.length > 0 && <ErrorsPassword />}
+				{props.formErrors.password.length > 0 && <PasswordError />}
 				<br /> <br />
 				<Button
 					variant="raised"

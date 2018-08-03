@@ -4,8 +4,8 @@ import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles/index';
 import Card from '@material-ui/core/Card';
 import AuthIcon from '@material-ui/icons/Person';
-import ErrorsEmail from './Errors';
-import ErrorsPassword from './Errors';
+import EmailError from '../Errors/EmailError';
+import PasswordError from '../Errors/PasswordError';
 import styles from './style';
 
 let Login = ({
@@ -23,12 +23,6 @@ let Login = ({
 					<h1>
 						<AuthIcon color="primary" className={classes.authIcon} />
 					</h1>
-					{/*{formValid !== true && (*/}
-					{/*<Card className={classes.inputGroup}>*/}
-					{/*Errors*/}
-					{/*<Errors formErrors={formErrors} />*/}
-					{/*</Card>*/}
-					{/*)}*/}
 					<TextField
 						id="email"
 						label="Email"
@@ -37,7 +31,7 @@ let Login = ({
 						value={email}
 						onChange={handleUserInput}
 					/>
-					{formErrors.email.length > 0 && <ErrorsEmail />}
+					{formErrors.email.length > 0 && <EmailError />}
 					<br />
 
 					<TextField
@@ -49,7 +43,7 @@ let Login = ({
 						onChange={handleUserInput}
 						value={password}
 					/>
-					{formErrors.password.length > 0 && <ErrorsPassword />}
+					{formErrors.password.length > 0 && <PasswordError />}
 					<br />
 					<br />
 					<Button
