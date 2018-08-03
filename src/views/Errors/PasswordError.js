@@ -7,6 +7,6 @@ export let PasswordError = ({ classes }) => {
 	return <div className={classes.error}>Password is to short</div>;
 };
 PasswordError.propTypes = {
-	classes: PropTypes.object,
+	classes: PropTypes.object.isRequired,
 };
 export default withStyles(styles)(PasswordError);

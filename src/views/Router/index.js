@@ -50,11 +50,11 @@ let MyRouter = ({ handleChange, activeTabValue, classes, viewToolbar }) => {
 	);
 };
 MyRouter.propTypes = {
-	handleChange: PropTypes.func,
+	handleChange: PropTypes.func.isRequired,
 	activeTabValue: PropTypes.any.isRequired,
-	login: PropTypes.string,
-	password: PropTypes.string,
-	viewToolbar: PropTypes.bool,
+	login: PropTypes.string.isRequired,
+	password: PropTypes.string.isRequired,
+	viewToolbar: PropTypes.bool.isRequired,
 };
 
 export default withStyles(styles)(MyRouter);

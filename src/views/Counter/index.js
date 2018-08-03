@@ -48,10 +48,10 @@ let Counter = ({
 	);
 };
 Counter.propTypes = {
-	incrementFunction: PropTypes.func,
-	resetFunction: PropTypes.func,
-	decrementFunction: PropTypes.func,
-	counterValue: PropTypes.number,
+	incrementFunction: PropTypes.func.isRequired,
+	resetFunction: PropTypes.func.isRequired,
+	decrementFunction: PropTypes.func.isRequired,
+	counterValue: PropTypes.number.isRequired,
 };
 
 export default withStyles(styles)(Counter);

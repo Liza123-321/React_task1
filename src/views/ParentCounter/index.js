@@ -52,10 +52,10 @@ let ParentCounter = ({
 	);
 };
 ParentCounter.propTypes = {
-	countCounter: PropTypes.number,
-	addFunction: PropTypes.func,
-	resetFunction: PropTypes.func,
-	removeFunction: PropTypes.func,
+	countCounter: PropTypes.number.isRequired,
+	addFunction: PropTypes.func.isRequired,
+	resetFunction: PropTypes.func.isRequired,
+	removeFunction: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(ParentCounter);

@@ -9,6 +9,7 @@ import AddIcon from '@material-ui/icons/Add';
 import HomeIcon from '@material-ui/icons/Home';
 import CommentIcon from '@material-ui/icons/Comment';
 import styles from './style';
+import PropTypes from 'prop-types';
 
 let About = ({ classes }) => {
 	return (
@@ -60,5 +61,7 @@ let About = ({ classes }) => {
 		</div>
 	);
 };
-
+About.propTypes = {
+	classes: PropTypes.object.isRequired,
+};
 export default withStyles(styles)(About);

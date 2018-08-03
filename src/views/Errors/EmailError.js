@@ -7,6 +7,6 @@ let EmailError = ({ classes }) => {
 	return <div className={classes.error}>Invalid email</div>;
 };
 EmailError.propTypes = {
-	classes: PropTypes.object,
+	classes: PropTypes.object.isRequired,
 };
 export default withStyles(styles)(EmailError);

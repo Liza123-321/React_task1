@@ -82,10 +82,10 @@ let Login = ({
 };
 Login.propTypes = {
 	handleChange: PropTypes.func,
-	email: PropTypes.string,
-	password: PropTypes.string,
-	formErrors: PropTypes.object,
-	formValid: PropTypes.bool,
+	email: PropTypes.string.isRequired,
+	password: PropTypes.string.isRequired,
+	formErrors: PropTypes.object.isRequired,
+	formValid: PropTypes.bool.isRequired,
 };
 
 export default withStyles(styles)(Login);

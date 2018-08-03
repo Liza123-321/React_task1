@@ -81,8 +81,7 @@ class CounterContainer extends React.Component {
 }
 
 CounterContainer.propTypes = {
-	key: PropTypes.number,
-	command: PropTypes.string,
+	command: PropTypes.string.isRequired,
 };
 
 export default CounterContainer;
