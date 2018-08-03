@@ -1,6 +1,5 @@
 import React from 'react';
 import Login from '../views/Login/index';
-import PropTypes from 'prop-types';
 import { validateForm, validateField } from '../validation';
 
 class LoginContainer extends React.Component {
@@ -39,10 +38,5 @@ class LoginContainer extends React.Component {
 		);
 	}
 }
-
-LoginContainer.propTypes = {
-	email: PropTypes.string,
-	password: PropTypes.string,
-};
 
 export default LoginContainer;

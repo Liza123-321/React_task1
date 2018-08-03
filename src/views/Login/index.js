@@ -7,6 +7,7 @@ import AuthIcon from '@material-ui/icons/Person';
 import EmailError from '../Errors/EmailError';
 import PasswordError from '../Errors/PasswordError';
 import styles from './style';
+import PropTypes from 'prop-types';
 
 let Login = ({
 	classes,
@@ -78,6 +79,13 @@ let Login = ({
 			</form>
 		</div>
 	);
+};
+Login.propTypes = {
+	handleChange: PropTypes.func,
+	email: PropTypes.string,
+	password: PropTypes.string,
+	formErrors: PropTypes.object,
+	formValid: PropTypes.bool,
 };
 
 export default withStyles(styles)(Login);

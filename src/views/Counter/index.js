@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles/index';
 import Card from '@material-ui/core/Card';
+import PropTypes from 'prop-types';
 import styles from './style';
 
 let Counter = ({
@@ -45,6 +46,12 @@ let Counter = ({
 			</Card>
 		</div>
 	);
+};
+Counter.propTypes = {
+	incrementFunction: PropTypes.func,
+	resetFunction: PropTypes.func,
+	decrementFunction: PropTypes.func,
+	counterValue: PropTypes.number,
 };
 
 export default withStyles(styles)(Counter);

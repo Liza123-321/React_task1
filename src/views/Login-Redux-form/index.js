@@ -8,6 +8,7 @@ import EmailError from '../Errors/EmailError';
 import PasswordError from '../Errors/PasswordError';
 import { Field, reduxForm } from 'redux-form';
 import styles from '../Login-Redux/style';
+import PropTypes from 'prop-types';
 
 this.renderField = ({ input, label, type }) => (
 	<div>
@@ -92,5 +93,13 @@ let LoginReduxForm = props => {
 LoginReduxForm = reduxForm({
 	form: 'login',
 })(LoginReduxForm);
+LoginReduxForm.propTypes = {
+	handleChange: PropTypes.func,
+	email: PropTypes.string,
+	password: PropTypes.string,
+	formErrors: PropTypes.object,
+	formValid: PropTypes.bool,
+	onSubmit: PropTypes.func,
+};
 
 export default withStyles(styles)(LoginReduxForm);

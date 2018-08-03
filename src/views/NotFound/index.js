@@ -2,6 +2,7 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import { withStyles } from '@material-ui/core/styles/index';
 import styles from './style';
+import PropTypes from 'prop-types';
 
 let NotFound = ({ classes }) => {
 	return (
@@ -12,5 +13,7 @@ let NotFound = ({ classes }) => {
 		</div>
 	);
 };
-
+NotFound.propTypes = {
+	classes: PropTypes.object,
+};
 export default withStyles(styles)(NotFound);

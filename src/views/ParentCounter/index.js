@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles/index';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 import styles from './style';
+import PropTypes from 'prop-types';
 
 let ParentCounter = ({
 	addFunction,
@@ -49,6 +50,12 @@ let ParentCounter = ({
 			</Button>
 		</div>
 	);
+};
+ParentCounter.propTypes = {
+	countCounter: PropTypes.number,
+	addFunction: PropTypes.func,
+	resetFunction: PropTypes.func,
+	removeFunction: PropTypes.func,
 };
 
 export default withStyles(styles)(ParentCounter);

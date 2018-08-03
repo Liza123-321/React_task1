@@ -6,6 +6,7 @@ import Tab from '@material-ui/core/Tab';
 import { Link } from 'react-router-dom';
 import styles from './style';
 import { withStyles } from '@material-ui/core/styles/index';
+import PropTypes from 'prop-types';
 
 let MyRouter = ({ handleChange, activeTabValue, classes, viewToolbar }) => {
 	const VIRTUAL_PATH = '/React_task1';
@@ -47,6 +48,13 @@ let MyRouter = ({ handleChange, activeTabValue, classes, viewToolbar }) => {
 			)}
 		</div>
 	);
+};
+MyRouter.propTypes = {
+	handleChange: PropTypes.func,
+	activeTabValue: PropTypes.any.isRequired,
+	login: PropTypes.string,
+	password: PropTypes.string,
+	viewToolbar: PropTypes.bool,
 };
 
 export default withStyles(styles)(MyRouter);

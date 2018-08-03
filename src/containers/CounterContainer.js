@@ -81,10 +81,7 @@ class CounterContainer extends React.Component {
 }
 
 CounterContainer.propTypes = {
-	incrementFunction: PropTypes.func,
-	resetFunction: PropTypes.func,
-	decrementFunction: PropTypes.func,
-	counterValue: PropTypes.number,
+	key: PropTypes.number,
 	command: PropTypes.string,
 };
 

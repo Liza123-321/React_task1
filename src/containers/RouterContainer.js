@@ -16,7 +16,6 @@ import LoginRedux from './LoginReduxContainer';
 import LoginReduxForm from './LoginReduxFormContainer';
 import LoginSuccess from '../views/Login-Redux/success';
 import LoginReduxFormSuccess from '../views/Login-Redux-form/success';
-import PropTypes from 'prop-types';
 
 const VIRTUAL_PATH = '/React_task1';
 const pathNameTab = [
@@ -119,12 +118,5 @@ class RouterContainer extends React.Component {
 		);
 	}
 }
-
-RouterContainer.propTypes = {
-	handleChange: PropTypes.func,
-	value: PropTypes.number,
-	login: PropTypes.string,
-	password: PropTypes.string,
-};
 
 export default withRouter(RouterContainer);

@@ -1,7 +1,6 @@
 import React from 'react';
 import ParentCounter from '../views/ParentCounter/index';
 import CounterContainer from './CounterContainer';
-import PropTypes from 'prop-types';
 
 class ParentCounterContainer extends React.Component {
 	constructor(props) {
@@ -92,12 +91,5 @@ class ParentCounterContainer extends React.Component {
 		);
 	}
 }
-
-ParentCounterContainer.propTypes = {
-	countCounter: PropTypes.number,
-	addFunction: PropTypes.func,
-	resetFunction: PropTypes.func,
-	removeFunction: PropTypes.func,
-};
 
 export default ParentCounterContainer;
